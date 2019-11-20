@@ -3,6 +3,7 @@
 package gcd
 
 import chisel3._
+import Properties._
 
 /**
   * Compute GCD using subtraction method.
@@ -12,12 +13,12 @@ import chisel3._
 
 class Fetch extends Module {
   val io = IO(new Bundle {
-    val result = Input(UInt(16.W))
+    val result = Input(UInt(XLEN.W))
     val pc_w = Input(Bool())
-    val inst = Output(UInt(16.W))
+    val inst = Output(UInt(XLEN.W))
   })
-  val inst_mem = Reg(Vec(8, UInt(16.W)))
-  val pc = RegInit(0.U(16.W))
+  val inst_mem = Reg(Vec(8, UInt(XLEN.W)))
+  val pc = RegInit(0.U(XLEN.W))
   val m = Module(new NextPC)
   m.io.pc := pc
   m.io.pc_w := false.B
@@ -29,10 +30,10 @@ class Fetch extends Module {
 
 class NextPC extends Module {
   val io = IO(new Bundle {
-    val pc = Input(UInt(16.W))
+    val pc = Input(UInt(XLEN.W))
     val pc_w = Input(Bool())
-    val result = Input(UInt(16.W))
-    val next_pc = Output(UInt(16.W))
+    val result = Input(UInt(XLEN.W))
+    val next_pc = Output(UInt(XLEN.W))
   })
   io.next_pc := Mux(io.pc_w, io.result, io.pc + 1.U)
 }
