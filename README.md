@@ -6,9 +6,12 @@ ocprocessor
 ## stages
 * Fetch
 * Decode
-* execute
+* Execute
+* Memory Access
 
 Synchronous circuit only PC module in Fetch stage
+
+
 
 
 
