@@ -33,6 +33,7 @@ class NextPC extends Module {
     val pc = Input(UInt(XLEN.W))
     val pc_w = Input(Bool())
     val result = Input(UInt(XLEN.W))
+
     val next_pc = Output(UInt(XLEN.W))
   })
   io.next_pc := Mux(io.pc_w, io.result, io.pc + 1.U)
