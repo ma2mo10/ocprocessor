@@ -17,7 +17,6 @@ class Decode extends Module {
     val mem_r = Output(Bool())
     val pc_w = Output(Bool())
     val rf_w = Output(Bool())
-    val is_eq = Output(Bool())
     val alith = Output(UInt(2.W))
     val rd_addr = Output(UInt(REG.W))
     val rd = Output(UInt(XLEN.W))
